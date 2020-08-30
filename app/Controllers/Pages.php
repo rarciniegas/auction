@@ -23,7 +23,31 @@ class Pages extends BaseController
     	echo view('templates/header', $data);
     	echo view('pages/'.$page, $data);
         echo view('templates/footer', $data);
-    }
+	}
+	
+	public function list_item()
+	{
+		$data = [];
+		echo view('templates/header', $data);
+		echo view('pages/list_item');
+		echo view('templates/footer');
+	}
+
+	public function item_search()
+	{
+		$data = [];
+		echo view('templates/header', $data);
+		echo view('pages/item_search');
+		echo view('templates/footer');
+	}
+
+	public function auction_results()
+	{
+		$data = [];
+		echo view('templates/header', $data);
+		echo view('pages/auction_results');
+		echo view('templates/footer');
+	}
 	//--------------------------------------------------------------------
 
 }

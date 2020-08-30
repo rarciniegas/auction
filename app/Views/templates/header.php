@@ -18,18 +18,30 @@
     <img src="/assets/images/auction_plus.png" class="img-fluid" alt="Responsive image">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-      <a class="navbar-brand" href="/">Ci4 Login</a>
+      <a class="navbar-brand" href="/">Auction+</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <?php if (session()->get('isLoggedIn')): ?>
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item <?= ($uri->getSegment(1) == 'welcome' ? 'active' : null) ?>">
+            <a class="nav-link"  href="/welcome">Welcome</a>
+          </li>
+          <li class="nav-item <?= ($uri->getSegment(1) == 'list_item' ? 'active' : null) ?>">
+            <a class="nav-link" href="/list_item">List item</a>
+          </li>
+          <li class="nav-item <?= ($uri->getSegment(1) == 'item_search' ? 'active' : null) ?>">
+            <a class="nav-link"  href="/item_search">Item search</a>
+          </li>
+          <li class="nav-item <?= ($uri->getSegment(1) == 'auction_results' ? 'active' : null) ?>">
+            <a class="nav-link" href="/auction_results">Auction results</a>
+          </li>
           <li class="nav-item <?= ($uri->getSegment(1) == 'dashboard' ? 'active' : null) ?>">
-            <a class="nav-link"  href="/dashboard">Dashboard</a>
+            <a class="nav-link"  href="/dashboard">Category report</a>
           </li>
           <li class="nav-item <?= ($uri->getSegment(1) == 'profile' ? 'active' : null) ?>">
-            <a class="nav-link" href="/profile">Profile</a>
+            <a class="nav-link" href="/profile">User report</a>
           </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">

@@ -13,7 +13,7 @@ class Users extends BaseController
 		if ($this->request->getMethod() == 'post') {
 			//let's do the validation here
 			$rules = [
-				'user_name' => 'required|min_length[6]|max_length[50]',
+				'user_name' => 'required|min_length[4]|max_length[50]',
 				'password' => 'required|min_length[8]|max_length[255]|validateUser[user_name, password]',
 			];
 
