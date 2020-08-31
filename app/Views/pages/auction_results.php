@@ -9,17 +9,22 @@
 					
 					<div class="features">   	
 						<div class="profile_section">
-                        	<div class="subtitle">Auction Results</div>   
-							<table>
-								<tr>
-									<td class="heading">ID</td>
-									<td class="heading">Item Name</td>
-									<td class="heading">Sale Price</td>
-									<td class="heading">Winner</td>
-									<td class="heading">Auction Ended</td>
-								</tr>
-                               
-							</table>						
+                        	<h2>Auction Results</h2>   
+
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Item name</th>
+      <th scope="col">Sale price</th>
+      <th scope="col">Winner</th>
+	  <th scope="col">Auction ended</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>						
 						</div>	
 					 </div> 
 				</div> 

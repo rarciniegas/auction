@@ -80,7 +80,7 @@
     <div class="col-sm-10">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="returnable">
-        <label class="form-check-label" for="gridCheck1">
+        <label class="form-check-label" for="returnable">
           
         </label>
       </div>
@@ -92,7 +92,7 @@
             <button type="submit" class="btn btn-primary">List</button>
         </div>
         <div class="col-12 col-sm-8 text-right">
-			<button type="submit" class="btn btn-danger">Cancel</button>
+			<a href="welcome" class="btn btn-danger">Cancel</a> 
         </div>
     </div>
 									

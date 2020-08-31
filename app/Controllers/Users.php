@@ -65,7 +65,7 @@ class Users extends BaseController
 			$rules = [
 				'first_name' => 'required|min_length[3]|max_length[20]',
 				'last_name' => 'required|min_length[3]|max_length[20]',
-				'user_name' => 'required|min_length[6]|max_length[50]|is_unique[user.user_name]',
+				'user_name' => 'required|min_length[4]|max_length[50]|is_unique[user.user_name]',
 				'password' => 'required|min_length[8]|max_length[255]',
 				'password_confirm' => 'matches[password]',
 			];

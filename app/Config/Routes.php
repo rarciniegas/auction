@@ -38,6 +38,8 @@ $routes->match(['get','post'],'profile', 'Users::profile', ['filter' => 'auth'])
 $routes->match(['get','post'],'list_item', 'Pages::list_item', ['filter' => 'auth']);
 $routes->match(['get','post'],'item_search', 'Pages::item_search', ['filter' => 'auth']);
 $routes->get('auction_results', 'pages::auction_results', ['filter' => 'auth']);
+$routes->get('category_report', 'pages::category_report', ['filter' => 'auth']);
+$routes->get('user_report', 'pages::user_report', ['filter' => 'auth']);
 $routes->get('welcome', 'pages::index', ['filter' => 'auth']);
 
 /**

@@ -28,6 +28,38 @@ class Pages extends BaseController
 	public function list_item()
 	{
 		$data = [];
+		helper(['form']);
+	
+		if ($this->request->getMethod() == 'post') {
+			//let's do the validation here
+			$rules = [
+			// '', '', '', ', 'ends_in', '', 'returnable', 'category', 'user_name', 'item_condition'];
+
+				'item_name' => 'required|min_length[3]|max_length[20]',
+				'description' => 'required|min_length[3]|max_length[255]',
+				'start_bid' => 'required|min_length[6]|max_length[50]|is_unique[user.user_name]',
+				'reserve' => 'required|less_than[0]',
+				'get_it_now' => 'required|less_than[0]',
+			];
+		
+			if (! $this->validate($rules)) {
+				$data['validation'] = $this->validator;
+			}else{
+				$model = new ItemModel();
+		
+				$newData = [
+					'first_name' => $this->request->getVar('first_name'),
+					'last_name' => $this->request->getVar('last_name'),
+					'user_name' => $this->request->getVar('user_name'),
+					'password' => $this->request->getVar('password'),
+				];
+				$model->save($newData);
+				$session = session();
+				$session->setFlashdata('success', 'Successful Registration');
+				return redirect()->to('/');
+			}
+		}
+		
 		echo view('templates/header', $data);
 		echo view('pages/list_item');
 		echo view('templates/footer');
@@ -46,6 +78,22 @@ class Pages extends BaseController
 		$data = [];
 		echo view('templates/header', $data);
 		echo view('pages/auction_results');
+		echo view('templates/footer');
+	}
+
+	public function category_report()
+	{
+		$data = [];
+		echo view('templates/header', $data);
+		echo view('pages/category_report');
+		echo view('templates/footer');
+	}
+
+	public function user_report()
+	{
+		$data = [];
+		echo view('templates/header', $data);
+		echo view('pages/user_report');
 		echo view('templates/footer');
 	}
 	//--------------------------------------------------------------------

@@ -37,11 +37,11 @@
           <li class="nav-item <?= ($uri->getSegment(1) == 'auction_results' ? 'active' : null) ?>">
             <a class="nav-link" href="/auction_results">Auction results</a>
           </li>
-          <li class="nav-item <?= ($uri->getSegment(1) == 'dashboard' ? 'active' : null) ?>">
-            <a class="nav-link"  href="/dashboard">Category report</a>
+          <li class="nav-item <?= ($uri->getSegment(1) == 'category_report' ? 'active' : null) ?>">
+            <a class="nav-link"  href="/category_report">Category report</a>
           </li>
-          <li class="nav-item <?= ($uri->getSegment(1) == 'profile' ? 'active' : null) ?>">
-            <a class="nav-link" href="/profile">User report</a>
+          <li class="nav-item <?= ($uri->getSegment(1) == 'user_report' ? 'active' : null) ?>">
+            <a class="nav-link" href="/user_report">User report</a>
           </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
