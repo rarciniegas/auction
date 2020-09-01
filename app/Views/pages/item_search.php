@@ -31,21 +31,21 @@
 	<div class="form-group row">
     	<label for="item_label" class="col-sm-2 col-form-label">Minimum price</label>
     	<div class="col-sm-4">
-			<input type="number" value="0.00" class="form-control" name="start_bid">
+			<input type="number" value="0.00" class="form-control" name="minprice">
     	</div>
   	</div>
 	<div class="form-group row">
     	<label for="item_label" class="col-sm-2 col-form-label">Maximum price</label>
     	<div class="col-sm-4">
-			<input type="number" value="0.00" class="form-control" name="reserve">
+			<input type="number" value="0.00" class="form-control" name="maxprice">
     	</div>
   	</div>
 
 
 	<div class="form-group row">
-    	<label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
+    	<label for="inputCategory" class="col-sm-2 col-form-label">Condition</label>
     	<div class="col-sm-4">
-			<select class="form-control" name="category">
+			<select class="form-control" name="shape">
 				<option></option>
                 <option>New</option>
                 <option>Very Good</option>

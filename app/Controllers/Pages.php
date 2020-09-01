@@ -1,5 +1,8 @@
 <?php namespace App\Controllers;
 
+use App\Models\ItemModel;
+
+
 class Pages extends BaseController
 {
 	public function index()
@@ -33,30 +36,42 @@ class Pages extends BaseController
 		if ($this->request->getMethod() == 'post') {
 			//let's do the validation here
 			$rules = [
-			// '', '', '', ', 'ends_in', '', 'returnable', 'category', 'user_name', 'item_condition'];
-
 				'item_name' => 'required|min_length[3]|max_length[20]',
 				'description' => 'required|min_length[3]|max_length[255]',
-				'start_bid' => 'required|min_length[6]|max_length[50]|is_unique[user.user_name]',
-				'reserve' => 'required|less_than[0]',
-				'get_it_now' => 'required|less_than[0]',
+				'start_bid' => 'required|greater_than_equal_to[0]',
+				'reserve' => 'required|greater_than_equal_to[0]',
+				'get_it_now' => 'required|greater_than_equal_to[0]',
 			];
-		
+			
+			$ends_in = Date('y:m:d H:i:s', strtotime('+'.$_POST['ends_in']));
+			if( isset( $_POST['returnable'] ) ){
+				$returnable = 1;
+			} else{
+				$returnable = 0;
+			}
+
 			if (! $this->validate($rules)) {
 				$data['validation'] = $this->validator;
 			}else{
 				$model = new ItemModel();
 		
 				$newData = [
-					'first_name' => $this->request->getVar('first_name'),
-					'last_name' => $this->request->getVar('last_name'),
-					'user_name' => $this->request->getVar('user_name'),
-					'password' => $this->request->getVar('password'),
+					'item_name' => $this->request->getVar('item_name'),
+					'description' => $this->request->getVar('description'),
+					'start_bid' => $this->request->getVar('start_bid'),
+					'reserve' => $this->request->getVar('reserve'),
+					'ends_in' => $ends_in,
+					'get_it_now' => $this->request->getVar('get_it_now'),
+					'returnable' => $returnable,
+					'category' => $this->request->getVar('category'),
+					'user_name' => $_SESSION['user_name'],
+					'item_condition' => $this->request->getVar('shape'),
+
 				];
 				$model->save($newData);
 				$session = session();
 				$session->setFlashdata('success', 'Successful Registration');
-				return redirect()->to('/');
+				return redirect()->to('welcome');
 			}
 		}
 		
@@ -68,6 +83,35 @@ class Pages extends BaseController
 	public function item_search()
 	{
 		$data = [];
+		helper(['form']);
+	
+		if ($this->request->getMethod() == 'post') {
+			//let's do the validation here
+			$rules = [
+				'keyword' => 'required|min_length[3]|max_length[20]',
+				'min_price' => 'required|greater_than_equal_to[0]',
+				'max_price' => 'required|greater_than_equal_to[0]',
+			];
+			
+
+
+			if (! $this->validate($rules)) {
+				$data['validation'] = $this->validator;
+			}else{
+		
+				$data = [
+					'keyword' => $this->request->getVar('keyword'),
+					'category' => $this->request->getVar('category'),
+					'min_price' => $this->request->getVar('min_price'),
+					'max_price' => $this->request->getVar('max_price'),
+					'condition' => $this->request->getVar('condition'),
+				];
+				$model->save($newData);
+				$session = session();
+				$session->setFlashdata('success', 'Successful Registration');
+				return redirect()->to('welcome');
+			}
+		}
 		echo view('templates/header', $data);
 		echo view('pages/item_search');
 		echo view('templates/footer');

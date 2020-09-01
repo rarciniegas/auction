@@ -9,13 +9,13 @@
 	<div class="form-group row">
     	<label for="inputItem_name" class="col-sm-2 col-form-label">Item</label>
     	<div class="col-sm-10">
-      		<input type="text" name="item_name" class="form-control" id="input_name">
+      		<input type="text" name="item_name" class="form-control">
     	</div>
   	</div>
 	<div class="form-group row">
     	<label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
     	<div class="col-sm-10">
-			<textarea class="form-control" id="description" name="description" rows="3"></textarea>
+			<textarea class="form-control" name="description" rows="3"></textarea>
 		</div>
   	</div>
 	<div class="form-group row">
@@ -36,11 +36,11 @@
     	<label for="shape" class="col-sm-2 col-form-label">Condition</label>
     	<div class="col-sm-4">
 			<select class="form-control" name="shape">
-				<option>New</option>
-				<option>Very Good</option>
-				<option>Good</option>
-				<option>Fair</option>
-				<option>Poor</option>
+				<option value="4">New</option>
+				<option value="3">Very Good</option>
+				<option value="2">Good</option>
+				<option value="1">Fair</option>
+				<option value="0">Poor</option>
 			</select>
 		</div>
   	</div>
@@ -79,13 +79,20 @@
     <div class="col-sm-2">Returnable</div>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="returnable">
+        <input class="form-check-input" type="checkbox" name="returnable" value="1">
         <label class="form-check-label" for="returnable">
           
         </label>
       </div>
     </div>
   </div>
+  <?php if (isset($validation)): ?>
+            <div class="col-12">
+              <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors() ?>
+              </div>
+            </div>
+<?php endif; ?>
 
 	<div class="row">
         <div class="col-12 col-sm-4">
